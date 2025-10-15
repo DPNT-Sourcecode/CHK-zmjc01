@@ -19,4 +19,5 @@ class TestCheckout():
         assert CheckoutSolution().checkout('AAAAAAAAA') == 380
 
     def test_checkout_offer_free(self):
-        assert CheckoutSolution().checkout('EEEEEEE') == 200
+        assert CheckoutSolution().checkout('EEEEEB') == 200
+
