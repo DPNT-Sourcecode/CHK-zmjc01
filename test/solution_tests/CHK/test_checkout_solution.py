@@ -139,9 +139,9 @@ class TestCheckout():
     # --- R5: NEW GROUP DISCOUNT OFFER (S, T, X, Y, Z) ---
     # Prices: Z(21), S(20), T(20), Y(20), X(17). Offer: buy any 3 for 45.
 
-    def test_checkout_group_basic(self):
-        # 3 items of the same kind: 3S @ 20 = 60. Offer: 45.
-        assert CheckoutSolution().checkout("SSS") == 45
+    # def test_checkout_group_basic(self):
+    #     # 3 items of the same kind: 3S @ 20 = 60. Offer: 45.
+    #     assert CheckoutSolution().checkout("SSS") == 45
 
     # def test_checkout_group_mixed_max_discount(self):
     #     # Z(21), S(20), Y(20). Base: 61. Offer: 45.
@@ -151,11 +151,11 @@ class TestCheckout():
     #     # X(17), X(17), T(20). Base: 54. Offer: 45.
     #     assert CheckoutSolution().checkout("XXT") == 45
 
-    # def test_checkout_group_one_set_and_remainder(self):
-    #     # S(20), T(20), X(17), X(17). 4 items.
-    #     # Greedy takes S, T, X(17) (20+20+17 = 57) for 45. Remainder: X(17).
-    #     # Total = 45 + 17 = 62
-    #     assert CheckoutSolution().checkout("STXX") == 62
+    def test_checkout_group_one_set_and_remainder(self):
+        # S(20), T(20), X(17), X(17). 4 items.
+        # Greedy takes S, T, X(17) (20+20+17 = 57) for 45. Remainder: X(17).
+        # Total = 45 + 17 = 62
+        assert CheckoutSolution().checkout("STXX") == 62
 
     # def test_checkout_group_single_set_from_five_items(self):
     #     # S(20), T(20), X(17), Y(20), Z(21). 5 items.
