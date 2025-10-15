@@ -7,7 +7,7 @@ class CheckoutSolution:
         # 2 B COST 30  however we have special offer for 45, which it will reduce this 15 every 2B products
 
         prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
-        discount = {'A': (3, 20), 'B': (2, 15)}
+        discount = {'A': [(5, 50), (3, 20)], 'B': [(2, 15)], 'E': [(3, 80)]}
         item_count = {}
         for item in skus:
             if item not in prices:
@@ -20,8 +20,12 @@ class CheckoutSolution:
         for item, count in item_count.items():
             total += count * prices[item]
             if item in discount:
-                discount_count, discount_amount = discount[item]
-                total -= (count // discount_count) * discount_amount                
+                special_offers = discount[item]
+                for offer in special_offers:
+                    discount_count, discount_amount = offer
+                    total -= (count // discount_count) * discount_amount     
+                    item_count[item] = count%discount_count # reduce the count for the next discount
+                           
         
         return total
 
