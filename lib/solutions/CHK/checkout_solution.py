@@ -6,8 +6,8 @@ class CheckoutSolution:
         # 3 A cost 150 however we have special offer 130, which it will reduce the total count 20 every 3A products
         # 2 B COST 30  however we have special offer for 45, which it will reduce this 15 every 2B products
 
-        prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 80, 'L': 90, 'M': 15, 'N': 40, 'O': 10, 'P': 50, 'Q': 30, 'R': 50, 'S': 30, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 90, 'Y': 10, 'Z': 50}
-        discount = {'A': [(5, 50), (3, 20)], 'B': [(2, 15)], 'H': [(10, 20), (5, 5)], 'K': [(2, 10)], 'P': [(5, 50)], 'Q': [(3, 10)], 'V': [(3, 20), (2, 10)]}
+        prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 70, 'L': 90, 'M': 15, 'N': 40, 'O': 10, 'P': 50, 'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17, 'Y': 20, 'Z': 21}
+        discount = {'A': [(5, 50), (3, 20)], 'B': [(2, 15)], 'H': [(10, 20), (5, 5)], 'K': [(2, 20)], 'P': [(5, 50)], 'Q': [(3, 10)], 'V': [(3, 20), (2, 10)]}
         free_item_offer = {'E': ('B', 2), 'F': ('F', 3), 'N': ('M', 3), 'R': ('Q', 3), 'U': ('U', 4)} # for every 2 E you get one B free
         
         group_items = ['S', 'T', 'X', 'Y', 'Z']
@@ -28,7 +28,7 @@ class CheckoutSolution:
         total += group_offers * group_offer_price
 
 
-        import pdb; pdb.set_trace()
+  
         remaining_group_items = total_group_items % group_offer_quantity
         if remaining_group_items > 0:
             # Sort items by price descending to maximize discount
@@ -80,5 +80,6 @@ class CheckoutSolution:
         return total
 
         
+
 
 
