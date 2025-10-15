@@ -8,7 +8,7 @@ class CheckoutSolution:
 
         prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
         discount = {'A': [(5, 50), (3, 20)], 'B': [(2, 15)]}
-        free_item_offer = {}# {'E': ('B', 2)} # for every 2 E you get one B free
+        free_item_offer = {'E': ('B', 2)} # for every 2 E you get one B free
         item_count = {}
         for item in skus:
             if item not in prices:
@@ -42,3 +42,4 @@ class CheckoutSolution:
         return total
 
         
+
