@@ -12,5 +12,4 @@ class TestCheckout():
         assert CheckoutSolution().checkout('ACADBD') == 180
 
     def test_checkout_several_discount(self):
-        assert CheckoutSolution().checkout('ACADAABAADBBBC') == 470
-
+        assert CheckoutSolution().checkout('ACADAABAADBBBC') == 420
