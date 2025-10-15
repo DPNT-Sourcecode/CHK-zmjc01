@@ -12,7 +12,7 @@ class TestCheckout():
         assert CheckoutSolution().checkout('ACADBD') == 180
 
     def test_checkout_several_discount(self):
-        assert CheckoutSolution().checkout('ACADAABAADBBBC') == 420
+        assert CheckoutSolution().checkout('ACADAABAADBBBC') == 410
 
 
     def test_checkout_multipleoffer_same_item(self):
@@ -22,9 +22,8 @@ class TestCheckout():
         assert CheckoutSolution().checkout('EEEEEB') == 200
 
 
-
-
     def test_checkout_offer_free(self):
         assert CheckoutSolution().checkout('EEEEBBBB') == 205
+
 
 
