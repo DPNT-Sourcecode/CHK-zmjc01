@@ -25,8 +25,10 @@ class CheckoutSolution:
         total_group_items = sum(group_item_count.values())
         group_offers = total_group_items // group_offer_quantity
         
-        total = group_offers * group_offer_price
+        total += group_offers * group_offer_price
 
+
+        import pdb; pdb.set_trace()
         remaining_group_items = total_group_items % group_offer_quantity
         if remaining_group_items > 0:
             # Sort items by price descending to maximize discount
@@ -78,4 +80,5 @@ class CheckoutSolution:
         return total
 
         
+
 
