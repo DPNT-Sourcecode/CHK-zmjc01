@@ -130,9 +130,3 @@ class TestCheckout():
         # F: 20 (3F)
         # Total: 130 + 45 + 120 + 0 + 45 + 80 + 130 + 20 = 570
         assert CheckoutSolution().checkout('AAABBNNNMHHHHHQQQVVVFFF') == 570
-
-
-
-
-
-
