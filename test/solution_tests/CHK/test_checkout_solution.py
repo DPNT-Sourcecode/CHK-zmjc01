@@ -130,3 +130,68 @@ class TestCheckout():
         # F: 20 (3F)
         # Total: 130 + 45 + 120 + 0 + 45 + 80 + 130 + 20 = 570
         assert CheckoutSolution().checkout('AAABBNNNMHHHHHQQQVVVFFF') == 570
+
+
+
+
+    # --- R5: NEW GROUP DISCOUNT OFFER (S, T, X, Y, Z) ---
+    # Prices: Z(21), S(20), T(20), Y(20), X(17). Offer: buy any 3 for 45.
+
+    def test_checkout_group_basic(self):
+        # 3 items of the same kind: 3S @ 20 = 60. Offer: 45.
+        assert CheckoutSolution().checkout("SSS") == 45
+
+    def test_checkout_group_mixed_max_discount(self):
+        # Z(21), S(20), Y(20). Base: 61. Offer: 45.
+        assert CheckoutSolution().checkout("ZSY") == 45
+
+    def test_checkout_group_mixed_smallest_items(self):
+        # X(17), X(17), T(20). Base: 54. Offer: 45.
+        assert CheckoutSolution().checkout("XXT") == 45
+
+    def test_checkout_group_one_set_and_remainder(self):
+        # S(20), T(20), X(17), X(17). 4 items.
+        # Greedy takes S, T, X(17) (20+20+17 = 57) for 45. Remainder: X(17).
+        # Total = 45 + 17 = 62
+        assert CheckoutSolution().checkout("STXX") == 62
+
+    def test_checkout_group_single_set_from_five_items(self):
+        # S(20), T(20), X(17), Y(20), Z(21). 5 items.
+        # Greedy takes Z, S, T (21+20+20 = 61) for 45. Remainder: Y(20), X(17).
+        # Total = 45 + 20 + 17 = 82
+        assert CheckoutSolution().checkout("STXYZ") == 82
+        
+    def test_checkout_group_two_full_sets(self):
+        # Z(21), Z(21), Y(20), T(20), S(20), X(17). 6 items.
+        # Set 1: Z, Z, Y (62) for 45. Set 2: T, S, X (57) for 45.
+        # Total = 45 + 45 = 90
+        assert CheckoutSolution().checkout("ZZYTSX") == 90
+        
+    def test_checkout_group_not_enough(self):
+        # X(17), Y(20). No offer. Total = 37.
+        assert CheckoutSolution().checkout("XY") == 37
+
+    # --- R5: Group Offer with Non-Group Items ---
+    def test_checkout_group_with_other_items(self):
+        # S(20), T(20) - No group offer: 40. A(50) - No offer: 50. Total: 90.
+        assert CheckoutSolution().checkout("STA") == 90
+        
+        # S(20), T(20), Z(21) for 45. A(50). Total: 45 + 50 = 95.
+        assert CheckoutSolution().checkout("STZA") == 95
+
+
+    # --- R5: Final Complex Combination ---
+    def test_checkout_complex_combination_all_offers_r5(self):
+        # Basket: 3A, 2B, 3N, 1M, 5H, 3Q, 3V, 3F, 3S (Group)
+        # SKUs: AAABBNNNMHHHHHQQQVVVFFF SSS
+        # A: 130 (3A)
+        # B: 45 (2B)
+        # N: 120 (3N gives 1M free)
+        # M: 0 (1M free)
+        # H: 45 (5H)
+        # Q: 80 (3Q)
+        # V: 130 (3V)
+        # F: 20 (3F)
+        # S: 45 (3S group offer)
+        # Total: 130 + 45 + 120 + 0 + 45 + 80 + 130 + 20 + 45 = 615
+        assert CheckoutSolution().checkout('AAABBNNNMHHHHHQQQVVVFFFSSS') == 615
