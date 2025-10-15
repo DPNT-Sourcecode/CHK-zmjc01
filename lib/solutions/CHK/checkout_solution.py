@@ -24,7 +24,6 @@ class CheckoutSolution:
         # Apply free item first
         for item, count in item_count.items():
             if item in free_item_offer:
-                    import pdb; pdb.set_trace()
                     free_item, required_count = free_item_offer[item]
                     if free_item in item_count:
                         item_count[free_item] = max(0, item_count[free_item] - (count // required_count))
@@ -43,6 +42,7 @@ class CheckoutSolution:
         return total
 
         
+
 
 
 
