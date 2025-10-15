@@ -13,6 +13,18 @@ class CheckoutSolution:
         group_items = ['S', 'T', 'X', 'Y', 'Z']
         group_offer_price = 45
         group_offer_quantity = 3
+
+
+        # Handle group offer first
+        group_item_count = {item: 0 for item in group_items}
+        for item in skus:
+            if item in group_item_count:
+                group_item_count[item] += 1
+
+        total_group_items = sum(group_item_count.values())
+        group_offers = total_group_items // group_offer_quantity
+        total = group_offers * group_offer_price
+        
         
         item_count = {}
         for item in skus:
@@ -24,6 +36,8 @@ class CheckoutSolution:
                 item_count[item] = 1 
         total = 0
 
+
+        
 
         # Apply free item first
         for item, count in item_count.items():
@@ -46,4 +60,5 @@ class CheckoutSolution:
         return total
 
         
+
 
