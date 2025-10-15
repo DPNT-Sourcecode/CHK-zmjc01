@@ -14,9 +14,9 @@ class CheckoutSolution:
         group_offer_price = 45
         group_offer_quantity = 3
 
+        total = 0
 
         # Handle group offer first
-        import pdb; pdb.set_trace()
         group_item_count = {item: 0 for item in group_items}
         for item in skus:
             if item in group_item_count:
@@ -42,9 +42,6 @@ class CheckoutSolution:
 
         # Remove group items from skus for further processing
         skus = ''.join([item for item in skus if item not in group_items])      
-            # Count items       
-        
-
         
         
         item_count = {}
@@ -55,7 +52,7 @@ class CheckoutSolution:
                 item_count[item] += 1
             else:
                 item_count[item] = 1 
-        total = 0
+    
 
 
         
@@ -81,3 +78,4 @@ class CheckoutSolution:
         return total
 
         
+
