@@ -16,6 +16,7 @@ class CheckoutSolution:
 
 
         # Handle group offer first
+        import pdb; pdb.set_trace()
         group_item_count = {item: 0 for item in group_items}
         for item in skus:
             if item in group_item_count:
@@ -23,7 +24,27 @@ class CheckoutSolution:
 
         total_group_items = sum(group_item_count.values())
         group_offers = total_group_items // group_offer_quantity
+        
         total = group_offers * group_offer_price
+
+        remaining_group_items = total_group_items % group_offer_quantity
+        if remaining_group_items > 0:
+            # Sort items by price descending to maximize discount
+            sorted_items = sorted(group_item_count.items(), key=lambda x: prices[x[0]], reverse=True)
+            for item, count in sorted_items:
+                if remaining_group_items == 0:
+                    break
+                if count > 0:
+                    take = min(count, remaining_group_items)
+                    total += take * prices[item]
+                    remaining_group_items -= take
+                    group_item_count[item] -= take      
+
+        # Remove group items from skus for further processing
+        skus = ''.join([item for item in skus if item not in group_items])      
+            # Count items       
+        
+
         
         
         item_count = {}
