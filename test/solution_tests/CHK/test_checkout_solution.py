@@ -16,4 +16,4 @@ class TestCheckout():
 
 
     def test_checkout_multiplebuy(self):
-        assert CheckoutSolution().checkout('AAAAA') == 200
+        assert CheckoutSolution().checkout('AAAAAAAAA') == 380

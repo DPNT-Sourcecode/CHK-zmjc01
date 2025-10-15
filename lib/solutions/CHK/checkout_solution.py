@@ -24,7 +24,6 @@ class CheckoutSolution:
                 for offer in special_offers:
                     discount_count, discount_amount = offer
                     total -= (count // discount_count) * discount_amount 
-                    import pdb; pdb.set_trace()    
                     count = count%discount_count # reduce the count for the next discount
                            
         
