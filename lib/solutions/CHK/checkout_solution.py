@@ -32,7 +32,7 @@ class CheckoutSolution:
         remaining_group_items = total_group_items % group_offer_quantity
         if remaining_group_items > 0:
             # Sort items by price descending to maximize discount
-            sorted_items = sorted(group_item_count.items(), key=lambda x: prices[x[0]], reverse=True)
+            sorted_items = sorted(group_item_count.items(), key=lambda x: prices[x[0]], reverse=False)
             for item, count in sorted_items:
                 if remaining_group_items == 0:
                     break
@@ -80,6 +80,7 @@ class CheckoutSolution:
         return total
 
         
+
 
 
 
