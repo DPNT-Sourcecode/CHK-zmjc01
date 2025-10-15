@@ -45,9 +45,8 @@ class TestCheckout():
 
     def test_checkout_no_discount(self):
         # Test a mix of items without discounts, including new ones (G, I, J, L, M, O, S, T, W, X, Y, Z)
-        # ACDB: 50+20+15+30 = 115.  + G + I + J + L + M + O + S + T + W + X + Y + Z
-        # 50+20+15+30 + 20+35+60+90+15+10+30+20+20+90+10+50 = 560
-        assert CheckoutSolution().checkout('ACDBGIJLMOSTWXYZ') == 560
+        # 50+20+15+30 + 20+35+60+90+15+10+30+20+20+90+10+50 = 565
+        assert CheckoutSolution().checkout('ACDBGIJLMOSTWXYZ') == 565
 
     # --- R4: Complex Nested Multi-Buy Offers ---
 
@@ -131,6 +130,7 @@ class TestCheckout():
         # F: 20 (3F)
         # Total: 130 + 45 + 120 + 0 + 45 + 80 + 130 + 20 = 570
         assert CheckoutSolution().checkout('AAABBNNNMHHHHHQQQVVVFFF') == 570
+
 
 
 
